@@ -1,0 +1,1121 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/liberation-serif.min.css");
+@import "header";
+@import "colores";
+@import "elementos";
+@import "fuentes";
+
+/*---------- MIXINS -------------*/
+@mixin setSizeWidthHeight($ancho, $alto) {
+    @if $ancho > 0 {
+        width: $ancho;
+    } ;
+    @if $alto > 0{
+        height: $alto;
+    };
+}
+/*---------- FIN MIXINS -------------*/
+
+/*---------- MAPS ----------------*/
+$mapContactoDivGral: (
+    modo_display_block:block,
+    modo_display_grid: grid,
+    estilo_borde: inset,
+    alineacion_contenido: center,
+    alineacion_items: center,
+    alineacion_texto : center,
+    ancho100p: 100%
+);
+
+$novedadLayout767: (
+    modo_display_flex: flex,
+    direction_flex: column,
+    gap_novedad: 10px,
+    padding-bottom_novedad: 2%,
+    border-bottom_novedad: 15px solid rgba(128, 128, 128, 0.801)
+);
+
+
+
+/*---------- FIN MAPS ----------------*/
+
+/* -------------- MASTER  ------------- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+
+
+/* Footer */
+.classFooter {
+    background-color:black;
+    padding-top: 2%;      
+    .textoFooter{
+        text-align: center;
+        color: $azulBordesMenuPrincipal;
+    }
+
+    .derechosAutor {
+        text-align: center;
+        margin-top: 3%;
+        color: $azulBordesMenuPrincipal;
+    }    
+}
+
+.divIconosFooter {
+    display: block;
+    float: left;
+    a {
+        img {
+            &:hover{
+                transform: scale(1.3, 1.3);
+            }
+        }
+    }    
+}
+
+.imagenIconoRedes {
+    @include setSizeWidthHeight(55px, 40px);
+    &:hover {
+        scale: (1.5, 1.5);
+    }
+}
+
+
+
+.divIconosRedes {
+    a {
+        img{
+            transform: scale(1,1);
+            margin-right: 20px;
+            &:hover{
+                transform: scale(1.3, 1.3);
+            }
+        }
+    }
+}
+
+
+
+/* Generales */
+.sectionPrincipal {
+    padding-left: 1%; 
+    padding-right: 1%;
+    padding-top: 1%;
+    background-color: rgba(0, 0, 0, 0.904) ;
+
+    .section_articlePrincipal {
+        border-style:inset;
+        display: inline-block;
+        background-color: whitesmoke;   
+        @include setSizeWidthHeight(100%, 0);
+    }
+
+    .tituloArticulo {
+        font-family: $font_family_titulo_articulo;
+        text-align: center;
+        font-size: xx-large; 
+        border-style: ridge;
+        background-color: rgba(57, 201, 141, 0.363);
+        margin: 10px;
+        background-image: linear-gradient(to right, rgba(0, 0, 255, 0.555), rgba(255, 255, 0, 0.521), rgba(90, 90, 155, 0.541), rgba(255, 166, 0, 0.514));
+    }
+}
+/* -------------- FIN MASTER  ------------- */
+
+
+
+
+/* -------------- INDEX  ------------- */
+.imagenFondo{
+    height: 800px; 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.692), rgba(0, 0, 0, 0.705)),  url('../img/foto_inicio_grey.jpg');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: cover;
+    background-blend-mode: soft-light;
+
+    .h1Bienvenida{
+        font-size: 45px;
+        background: $colorFontBienvenida;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        margin-top: 28%;
+        text-align: center;
+        animation-duration: 0.8s;
+        animation-name: animacionBienvenida;
+        animation-iteration-count: 1; /*infinite;*/
+    }
+}
+
+@keyframes animacionBienvenida {
+    0% {transform: scale(0,0);}
+    12% {transform: scale(0.1,0.1);}
+    25% {transform: scale(0.2,0.2);}
+    37% {transform: scale(0.3,0.3);}
+    50% {transform: scale(0.5, 0.5);}
+    63% {transform: scale(0.6, 0.6);}
+    75% {transform: scale(0.7, 0.7);}
+    87% {transform: scale(0.8, 0.8);}
+    100% {transform: scale(1,1);}
+}
+
+/* index - Burbuja Noticias */
+#noticia{
+    background-color: burlywood;
+    top: 10%;
+    position: fixed;
+    right: 100px;
+    text-align: center;
+    border-radius: 50%;
+    @include setSizeWidthHeight(170px, 80px );
+}
+
+#noticia__titulo {
+    text-decoration: underline;
+    margin-top: 5%;
+}
+
+#noticia_inscribite {
+    animation: blinker 1s step-start infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+/* FIN index - Burbuja Noticias */
+
+/* -------------- FIN INDEX  ------------- */
+
+/* -------------- CONSTRUCCION  ------------- */
+
+.imagenFondoConstruccion{
+    @include setSizeWidthHeight(30%, 0);
+    padding-left: 30%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: cover;
+}
+/* -------------- FIN CONSTRUCCION  ------------- */
+
+
+/* -------------- PROXIMOS EVENTOS  ------------- */
+
+.footerGridProximosEventos{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+table, th,  td {
+    border: 1px solid black;
+}
+th{
+    font-style: inherit;
+}
+
+
+
+/* Grillas Proximos Eventos */
+
+.gridProximosEventos > * {
+    border: $verdeBorder;
+    background-color: whitesmoke;
+    background-image: $radialBackground-image;
+}
+
+.gridProximosEventos {
+    display: grid;
+    margin-left: 18%;
+    margin-right: 10%;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-areas: 
+    "cabecera cabecera cabecera"
+    "section1 section1 aside"
+    "section2 section2 aside"
+    "section3 section3 rango"
+    "section4 section4 section4"
+    "footer footer footer"    
+    ;
+    header {
+        grid-area: cabecera;
+    }
+    footer {
+        grid-area: footer;
+    }    
+
+    .itemsResumenEvento {
+        grid-area: section1;
+        padding-left: 2%;
+        padding-right: 2%;
+        font-size: x-large;
+    }
+    
+    .itemCuandoyDonde {
+        grid-area: section2;
+        padding-left: 2%;
+    }
+    
+    .maps {
+        grid-area: aside;
+        padding-left:0;
+        .divContenedorMaps{
+            display: grid;
+            margin: 5%;
+        }
+    }
+    
+    .categorias {
+        grid-area: section3;
+        padding: 2%;
+    }
+    
+    .rangoEdades{
+        grid-area: rango;
+        .divContenedorTablaRangoEdades{
+            display: grid;
+            padding: 5%;
+        }
+    }
+    
+    .consideraciones{
+        grid-area: section4;
+        padding: 2%;
+        .ConsideracionesFlex{
+            display: flex;
+            flex-wrap: wrap;    
+            gap: 10px;
+        }    
+    }
+
+    .tituloGridHijo{
+        margin: 20px;
+    }
+    
+
+
+}
+
+/* -------------- FIN PROXIMOS EVENTOS  ------------- */
+
+/* -------------- FELICITACIONES  ------------- */
+#felicitacionesFelicitaciones{
+    text-align: center; 
+    background: rgb(111, 109, 243); 
+    color:yellow; 
+    padding-left: 20%; 
+    padding-right: 20%;    
+}
+
+/* -------------- FIN FELICITACIONES  ------------- */
+
+
+/* -------------- MIS DATOS  ------------- */
+#misDatosFormulario {
+    margin: 10px;
+
+    #misDatosDatosPers {
+        text-align: center;
+    }
+    
+    #misDatosFoto {
+        text-align: center;
+        padding-left: 10%;
+    }
+
+    .misDatosFrameTerminos{
+        @include setSizeWidthHeight(100%, 250px);
+        transition: height;
+        &:hover{
+            background-color: $colorHoverText;
+        }
+    }
+    #misDatosCheckAceptar {
+        margin-left: 20%;
+    
+    }
+}
+
+.divCargaDatosText {
+    transition: height 1s;
+    &:hover {
+        background-color: $colorHoverText;
+    }
+}
+
+
+/* -------------- FIN MIS DATOS  ------------- */
+
+/* -------------- TERMINOS Y CONDICIONES DEL SITIO -----*/
+.textoTerminosDelSitio {
+    background-color: #359477;
+    height: 20px;
+    &:hover {
+        height: 300px;
+    }
+}
+/* -------------- FIN TERMINOS Y CONDICIONES DEL SITIO -----*/
+
+/* -------------- NOVEDADES  ------------- */
+
+.sectionNovedades {
+    border-style:inset;
+    background-color: whitesmoke;   
+    @include setSizeWidthHeight(99%, 0); 
+
+    .novedadLayout{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 3fr 1fr;
+        border-bottom: 15px solid rgba(128, 128, 128, 0.801);
+        grid-template-areas: 
+            "titleIzq sectionRightIzq"
+            "sectionLeftIzq sectionRightIzq"
+            "fuenteIzq sectionRightIzq"
+            ;
+    }
+    .novedadLayout--Izq{
+        @extend .novedadLayout;
+        padding-bottom: 2%;
+    }
+
+    .novedadLayout--Der{
+        @extend .novedadLayout;
+        grid-template-areas: 
+            "sectionRightDer titleDer "
+            "sectionRightDer sectionLeftDer"
+            "sectionRightDer fuenteDer"
+            ;
+    }
+
+    .tituloNovedad{
+        font-size: xx-large;
+        text-decoration: underline;
+        text-align: center;
+    }
+    .tituloNovedad--Izq {
+        @extend .tituloNovedad;
+        grid-area: titleIzq;
+    }
+
+    .tituloNovedad--Der {
+        @extend .tituloNovedad;
+        grid-area: titleDer;
+    }
+
+    .parrafoNovedad{
+        font-size: x-large;
+        margin-left: 2%;
+    }
+    .parrafoNovedad--Izq {
+        @extend .parrafoNovedad;
+        grid-area: sectionLeftIzq;
+    }
+    .parrafoNovedad--Der {
+        @extend .parrafoNovedad;
+        grid-area: sectionLeftDer;
+    }
+
+    .fotoVideoIzq {
+        grid-area: sectionRightIzq;
+        padding-left: 20%;
+        padding-right: 20%;
+        .imgvideoNovedad {
+            @include setSizeWidthHeight(100%, 315px);
+            border: 0;
+        }
+        
+    }
+
+    .fotoVideoDer {
+        grid-area: sectionRightDer;
+    }
+
+    #fotoNovedadDer {
+        transform: rotate(350deg) translate(30px, 30px);
+        @include setSizeWidthHeight(50%, 80%);
+
+    }
+    #fotoNovedadDer2 {
+        transform: rotateZ(10deg) translate(0px, 10px) scale(-0.8, 0.8);
+        @include setSizeWidthHeight(40%, 60%);
+    }
+}    
+
+/* -------------- FIN NOVEDADES  ------------- */
+
+
+/* -------------- CONTACTO ------------- */
+
+#formContacto {
+    width: auto;
+
+    #contactoDivGral {
+        border-style:map-get($mapContactoDivGral, estilo_borde); 
+        align-items: map-get($mapContactoDivGral , alineacion_item );
+        display: map-get($mapContactoDivGral, modo_display_grid);    
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 2fr 0.5fr;
+        grid-template-areas: 
+        "imagenTrabajoEquipo datos"
+        "botones1 botones";
+        
+        #imgTrabajoEquipo {
+            grid-area: imagenTrabajoEquipo;
+        }
+
+        #botonesContacto{
+            grid-area: botones;
+        }
+
+        #griddatosContacto {
+            grid-area: datos;
+            #labelNombre{
+                padding-right: 3px;
+            }
+        
+            #labelCorreo {
+                padding-right: 11px;
+            }
+
+            #textAreaConsulta{
+                padding-right: 15%;
+            }
+                
+            .divCargaDatosTextArea {
+                transition: height 1s;
+                &:hover {
+                    background-color: $colorHoverText;
+                }
+            }
+        
+        }
+            
+    }
+}
+
+/* -------------- FIN CONTACTO ------------- */
+
+
+
+
+/*---------------- AYUDA ------------------*/
+
+
+.detalleAyuda {
+    display: grid;
+    grid-template-areas: 
+    "titulo titulo titulo"
+    "detalle detalle icono"
+    "arriba arriba arriba"
+    ;
+    grid-template-columns: 1fr 2fr 0.5fr;
+    margin: 1%;
+    border-style: double;
+    border-color: blue;
+    background-color: whitesmoke;
+    background-image: radial-gradient(rgba(0, 89, 255, 0.445), rgba(141, 216, 97, 0.644));
+
+    p {
+        margin-top: 1%;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-bottom: 2%;
+        grid-area: detalle;
+    }
+
+    h2{
+        background-image: linear-gradient(to right, rgba(0, 0, 99, 0.411), rgba(121, 121, 25, 0.521), rgba(90, 90, 155, 0.541), rgba(255, 166, 0, 0.281));
+        grid-area: titulo;
+    }
+
+    a{
+        grid-area: arriba;
+    }
+
+    .divImagenAyuda{
+        grid-area: icono;
+        align-self: center;
+        justify-self: center;
+        .iconosAyuda{
+            /*transform: scale(0.8,0.8);*/
+            animation-iteration-count: infinite;
+            animation-name: movimientoIcono;
+            animation-duration: 4s;
+            animation-timing-function: ease-in-out;
+            max-width:100%;
+            width:auto;
+            height:auto;    
+        }
+    }
+    
+}
+
+
+@keyframes movimientoIcono{
+    0%{width: 50px; }
+    25%{width: 60px; }
+    50%{width: 70px; }
+    75%{width: 60px; }
+    100%{width: 50px;}
+}
+
+
+/*---------------- FIN AYUDA ------------------*/
+
+
+
+
+/**** MEDIA QUERYS ***********/
+@media only screen and (max-width: 1595px){
+    .fotoVideoDer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        #fotoNovedadDer {
+            transform: rotate(350deg) translate(30px, 30px);
+            @include setSizeWidthHeight(30%, 80%);
+        }
+        #fotoNovedadDer2 {
+            transform: rotateZ(10deg) translate(0px, 10px) scale(-1, 1);
+            @include setSizeWidthHeight(30%, 60%);
+        }
+    }
+
+
+    /* Media Query Novedades */
+    .sectionNovedades {
+        .novedadLayout--Izq{
+            display: map-get($novedadLayout767, modo_display_flex);
+            flex-direction: map-get($novedadLayout767 , direction_flex);
+            gap: map-get($novedadLayout767, gap_novedad);
+            padding-bottom: map-get($novedadLayout767, padding-bottom_novedad);
+            border-bottom: map-get($novedadLayout767, border-bottom_novedad);
+        }
+        .novedadLayout--Der{
+            display: map-get($novedadLayout767, modo_display_flex);
+            flex-direction: map-get($novedadLayout767 , direction_flex);
+            gap: map-get($novedadLayout767, gap_novedad);
+            padding-bottom: map-get($novedadLayout767, padding-bottom_novedad);
+            border-bottom: map-get($novedadLayout767, border-bottom_novedad);
+        }
+    }
+    /* FIN Media Query Novedades */
+}
+
+
+/*@media screen and (min-width:451px) and (max-width: 1224px) {*/
+@media screen and (max-width: 1224px) {
+    /* Media query Contacto */
+    #sectionPrincipalContacto{
+        @include setSizeWidthHeight(80%, 0);
+        #contactoDivGral {
+            display: map-get($mapContactoDivGral, modo_display_block);    
+            align-content: map-get($mapContactoDivGral, alineacion_contenido);
+            text-align: map-get($mapContactoDivGral, alineacion_texto);
+            width: map-get($mapContactoDivGral, ancho100p);
+            #textAreaConsulta{
+                width: 20rem;
+            }
+        }
+    }
+
+    /* Fin Media query Contacto */
+
+}
+
+
+
+
+
+@media only screen and (max-width: 1020px) {
+
+    /* Media Query min 1019px  INSCRIPCION EVENTOS  */
+    .gridInscripcionEventosDatosPers > * {
+        border: $verdeBorder;
+        background-color: whitesmoke;
+        background-image: $radialBackground-image;
+    }
+
+    .gridInscripcionEventosDatosPers {
+        display: grid;
+        grid-template-columns: 2fr 2fr 2fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 4fr ;
+        margin-left: 10%;
+        margin-right: 10%;
+
+        #tituloInscripcion {
+            grid-column: 1/4 ;
+            grid-row:1/1;
+        }
+        #apellidoInscripcion {
+            grid-column: 1/1 ;
+            grid-row:2/2;
+            border-right: 0;
+            #inscripcionEventosinputApellido {
+                margin-left: 21px;
+            }
+        }
+        #nombreInscripcion {
+            grid-column: 2/2 ;
+            grid-row:2/2;
+            border-left: 0;
+            #inscripcionEventosinputNombre {
+                margin-left: 21px;
+            }
+        }
+
+        #documentoInscripcion {
+            grid-column: 1/1 ;
+            grid-row:3/3;
+            border-right: 0;
+            #inscripcionEventosinputDocumento {
+                margin-left: 1%;
+            }
+        }
+
+        #generoInscripcion {
+            grid-column: 2/2 ;
+            grid-row:3/3;
+            border-left: 0;
+        }
+
+        #fechaNacimientoInscripcion {
+            grid-column: 1/1 ;
+            grid-row:4/4;
+            border-right: 0;
+            #inscripcionFechaNacimientoInscripcion {
+                margin-left: 2%;
+            }        
+
+        }
+
+        #equipoInscripcion {
+            grid-column: 2/2 ;
+            grid-row:4/4;
+            border-left: 0;
+            #inscripcionEventossectionEquipo{
+                width: 53%;
+                margin-left: 7%;
+            }
+
+        }
+
+        #datosContactoInscripcion {
+            grid-column: 3/3 ;
+            grid-row:2/5;
+        }
+
+        #datosContactoInscripcion {
+            div {
+                align-content: space-between;
+                margin-top: 8%;
+                margin-left: 8%;
+                input{
+                    width: 90%;
+                }        
+            }
+        }
+
+        #divTerminosInscripcion {
+            grid-column: 1/4 ;
+            grid-row: 5/5;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 1%;
+        }
+    }
+
+    .itemDatosInscripcion{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .frameTerminos{
+        width: 100%;
+    }
+/* FIN Media Query min 1019px  INSCRIPCION EVENTOS  */
+/*}
+@media only screen and (max-width: 1020px){*/
+
+    /* Media Query Proximos Eventos */
+    main {
+        .gridProximosEventos {
+            display: block;
+            margin-left: 10%;
+            margin-right: 10%;
+            text-align: center;
+
+            .itemCuandoyDonde {
+                display: block;
+            }
+            .maps {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                .divContenedorMaps{
+                    display: block;
+                    width: 100%;
+                    margin: 2%;
+                }
+            }
+
+            .categorias {
+                flex-direction: column;  
+                align-items: center; 
+                text-align: center;
+            }    
+        
+            .rangoEdades {
+                display: flex;
+                flex-direction: column;  
+                padding: 2%;
+            }
+        
+            .footerGridProximosEventos {
+                display: block;
+                padding-bottom: 2%;
+            }
+
+            .consideraciones {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                background-color: azure;
+                .tituloGridHijo {
+                    text-align: center;
+                }
+                .ConsideracionesFlex{
+                    display: inline-block;
+                    justify-items: center;
+                }
+            }
+            
+        }
+    }
+    /* FIN Media Query Proximos Eventos */
+
+    /* Media Query Inscripcion Evento */
+    .gridInscripcionEventosDatosPers > * {
+        border: $verdeBorder;
+        background-color: whitesmoke;
+        background-image: $radialBackground-image;
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
+    form {
+        .gridInscripcionEventosDatosPers{
+            display: grid;
+            grid-template-areas: 
+            "titulo titulo"
+            "apellido nombre"
+            "documento genero"
+            "fechanac equipo"
+            "contacto contacto"
+            "terminos terminos"
+            ;
+            margin-left: 5%;
+            margin-right: 5%;
+
+            #inscripcionEventosinputApellido{
+                margin-left: 7%;
+            }
+        
+            #tituloInscripcion {
+                grid-area: titulo;
+            }
+        
+            #apellidoInscripcion {
+                grid-area: apellido;
+                border-right: 0;
+            }
+        
+            #nombreInscripcion {
+                grid-area: nombre;
+                border-left: 0;
+            }
+        
+            #documentoInscripcion {
+                grid-area: documento;
+                border-right: 0;
+            }
+        
+            #generoInscripcion {
+                grid-area: genero;
+                border-left: 0;
+            }
+        
+            #fechaNacimientoInscripcion {
+                grid-area: fechanac;
+                border-right: 0;
+            }
+        
+            #equipoInscripcion {
+                grid-area: equipo;
+                border-left: 0;
+            }
+        
+            #datosContactoInscripcion {
+                grid-area: contacto;
+            }
+        
+            
+            #divTerminosInscripcion {
+                grid-area: terminos;
+                padding-left: 5%;
+                padding-right: 5%;
+                padding-top: 1%;
+            }    
+        
+            #inscripcionEventosinputApellido{
+                margin-left: 21px;
+            }
+        
+            #inscripcionEventosinputNombre{
+                margin-left: 21px;
+            }
+        
+            #inscripcionEventosinputDocumento {
+                margin-left: 1%;
+            }
+        
+            #inscripcionEventossectionEquipo{
+                width: 55%;
+                margin-left: 8%;
+            }
+        
+            #inscripcionFechaNacimientoInscripcion {
+                margin-left: 2%;
+            }
+        } 
+    }
+
+/* FIN Media Query Inscripcion Evento */
+
+}
+
+@media only screen and (max-width: 1000px){
+    .navMenu {
+        ul {
+            li {
+                display: inline-table;
+                font-size: 17px;
+            }
+        }
+    }
+}
+
+
+
+/*@media only screen and (min-width: 457px) and (max-width: 767px){*/
+@media only screen and (max-width: 767px){
+    .divLogoNombreSitio__nombreSitio{
+        font-size: xx-large;
+    }
+
+    section {
+        #divcontainerButton {
+            padding-left: 25%;
+        }
+    }
+
+    .divLogoNombreSitio__imagenLogoSitio {
+        width: 100px;
+        height: 100px;
+    }  
+
+    .imagenFondo {
+        .h1Bienvenida{
+            font-size: 38px;
+        }
+    }
+    /* FIN Media Query Header */    
+
+    .menuSticky {
+        position: static;
+        width: 100%;
+    }
+
+
+    .navMenu {
+        ul {
+            li {
+                display: block;
+                width: 80%;
+                font-size: 15px;
+            }
+        }
+    }
+
+    /* FIN Media Query Header */
+
+
+
+    /* Media Query Novedades */
+    .sectionNovedades {
+        .novedadLayout--Izq{
+            display: map-get($novedadLayout767, modo_display_flex);
+            flex-direction: map-get($novedadLayout767 , direction_flex);
+            gap: map-get($novedadLayout767, gap_novedad);
+            padding-bottom: map-get($novedadLayout767, padding-bottom_novedad);
+            border-bottom: map-get($novedadLayout767, border-bottom_novedad);
+        }
+        .novedadLayout--Der{
+            display: map-get($novedadLayout767, modo_display_flex);
+            flex-direction: map-get($novedadLayout767 , direction_flex);
+            gap: map-get($novedadLayout767, gap_novedad);
+            padding-bottom: map-get($novedadLayout767, padding-bottom_novedad);
+            border-bottom: map-get($novedadLayout767, border-bottom_novedad);
+        }
+    }
+    /* FIN Media Query Novedades */
+}
+
+@media only screen and (max-width: 455px){
+    .divLogoNombreSitio__nombreSitio{
+        font-size: xx-large;
+    }
+    .divLogoNombreSitio__imagenLogoSitio {
+        width: 80px;
+        height: 80px;
+    }
+    #sectionIconsFooter{
+        display: flex;
+    }
+    .imagenFondo {
+        .h1Bienvenida{
+            font-size: 35px;
+        }
+    }
+
+    section {
+        #divcontainerButton {
+            padding-left: 13%;
+        }
+    }
+
+    .divHeaderGeneralNombreSitio{
+        display: grid;
+        grid-template-areas: 
+        "icono nada ayuda"
+        "nombre nombre nombre"
+        ;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 0.6fr 1fr;
+    }
+
+    #divLogo{
+        grid-area: icono;
+    }
+
+    #divNombreSitio{
+        grid-area: nombre;
+        display: inline-block;
+        justify-self: center;
+    }
+
+    #divHelp{
+        grid-area: ayuda;
+        justify-self: center;
+        align-self: center;
+    }
+
+    /* Media Query Felicitaciones */
+    #felicitacionesFelicitaciones{
+        width: 100%;
+    }
+    /* Fin Media Query Felicitaciones */
+
+    /* Media Query Contacto */
+    #formContacto {
+        width: 100%;
+    }
+
+    #contactoDivGral {
+        display: map-get($mapContactoDivGral, modo_display_block );    
+        align-content: map-get($mapContactoDivGral, alineacion_contenido);
+        text-align: map-get($mapContactoDivGral, alineacion_texto);
+        width: map-get($mapContactoDivGral, ancho100p);
+    }
+
+    #sectionPrincipalContacto{
+        #contactoDivGral {
+            #textAreaConsulta{
+                width: 18rem;
+            }    
+        }
+    }
+    /*Fin media Query Contacto */
+}
+
+@media only screen and  (max-width: 410px){
+    #sectionPrincipalContacto{
+        #contactoDivGral {
+            #textAreaConsulta{
+                width: 16rem;
+            }    
+        }
+    }
+}
+
+@media only screen and  (max-width: 355px){
+    .divLogoNombreSitio__nombreSitio{
+        font-size: x-large;
+    }
+    .divLogoNombreSitio__imagenLogoSitio {
+        width: 80px;
+        height: 80px;
+    }
+    #sectionIconsFooter{
+        display: block;
+    }
+    #divIconosRedes{
+        display: flex;
+    }
+    .imagenFondo {
+        .h1Bienvenida{
+            font-size: 30px;
+        }
+    }
+
+    #sectionPrincipalContacto{
+        #contactoDivGral {
+            #textAreaConsulta{
+                width: 14rem;
+            }    
+        }
+    }
+}
+
+@media only screen and  (max-width: 310px){
+    #sectionPrincipalContacto{
+        #contactoDivGral {
+            #textAreaConsulta{
+                width: 12rem;
+            }    
+        }
+    }
+}
+
+@media only screen and  (max-width: 280px){
+    .divHeaderGeneralNombreSitio{
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+@media only screen and  (max-width: 250px){
+    .imagenFondo {
+        .h1Bienvenida{
+            font-size: 25px;
+        }
+    }
+}
+
+
+
+/**** FIN MediaQuerys ***********/
